@@ -4,6 +4,37 @@
 {% block title %} Login {% endblock %}
 
 {% block content %}
-<h1>login page</h1>
+<div class="container vertical-center">
+    <div class="row">
+        
+       
+        <!-- Form Section -->
+        <div class="container mt-3 p-4">
+            <div class="rounded col-10 d-flex justify-content-center mx-auto" style="background-color: rgb(255, 255, 255);">
+                <!-- Photo Section (Optional) -->
+                <div id="photo" class="col-8 d-none d-xl-block d-none d-md-block">
+                    <img class="rounded" style="max-width: 80%; height: auto;" src="../static/img/login-banner.jpg" alt="">
+                </div>
+                <!-- Login Form -->
+                <div id="form" class="col-4 card-body p-4 mt-5">
+                    <h3 class="text-center mb-4">Login</h3>
+                    <hr>
+                    <form action="/login" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="Enter Username">
+                            <label for="floatingInputUsername">Username</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingInputPassword" placeholder="Password">
+                            <label for="floatingInputPassword">Password</label>
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-lg btn-block col-12 mt-3 p-2">Login</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
