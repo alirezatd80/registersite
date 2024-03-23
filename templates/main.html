@@ -5,5 +5,59 @@
 {% block title %} Main {% endblock %}
 
 {% block content %}
- <h1>this is main page</h1>
+ 
+<div class="container vertical-center">
+    <div class="row">
+        
+       
+        <!-- Form Section -->
+        <div class="container mt-3 p-4">
+            <div class="rounded col-10 d-flex justify-content-center mx-auto" style="background-color: rgb(255, 255, 255);">
+                
+               
+               
+                <form action="#" method="#" class="row g-3 p-5" >
+                    <div class="col-md-12">
+                        <h3 class="text-center ">Register Form</h3>
+                    </div>
+                    <div class="col-md-6 ">
+                        <input type="text" name="FullName" class="form-control" placeholder="Full name" aria-label="full name">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" name="Age" class="form-control" placeholder="Age" aria-label="Age">
+                    </div>
+                    <div class="col-12">
+                        <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
+                    </div>
+                    <div class="col-12">
+                        <input type="tel" name="PhoneNumber" class="form-control" placeholder="PhoneNumber" aria-label="PhoneNumber">
+
+                    </div>
+                    
+                    <div class="col-md-4">
+                      
+                      <select id="inputState" class="form-select">
+                        <option selected>Teacher</option>
+                        <option>Parents</option>
+                        <option>Steudent</option>
+
+                      </select>
+                    </div>
+                    <div class="col-8">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                          I Agree with All
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary col-12">Sign in</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
