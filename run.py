@@ -40,7 +40,7 @@ def stringfomat(text):
 # routes
 @app.route("/")
 def main():
-    return 'Home'
+    return render_template('main.html')
 
 @app.route("/log")
 def login():
