@@ -13,7 +13,7 @@ class Admins(db.Model):
     password = db.Column(db.String(60), nullable=False)
     
     def __repr__(self):
-        return f"Admin('{self.username}')"
+        return f"{self.username}:{self.password}"
 
 #create database file
 with app.app_context():
@@ -26,11 +26,18 @@ def AddAdmin(name , passsword):
     db.session.add(admin)
     db.session.commit()
 
+def getall():
+   allAdmins = Admins.query.all()
+   return str(allAdmins)
+
+def findByUsername(name):
+    user = Admins.query.filter_by(username = name).all()
+    return user 
 
 # routes
-@app.route("/")
-def main():
-    return 'hi'
+@app.route("/<username>")
+def main(username):
+     return "hi"      
 
 @app.route("/log")
 def login():
