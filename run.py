@@ -60,6 +60,7 @@ def stringfomat(text):
 # routes
 @app.route("/")
 def main():
+    
     return render_template('main.html')
 
 @app.route('/Register' , methods = ['POST','GET'])
@@ -95,7 +96,8 @@ def checklog():
 
 @app.route("/adminpage/<loguser>")
 def adminpage(loguser):
-    return render_template('adminpage.html',name=loguser)
+    users = RegisteredUser.query.all()
+    return render_template('adminpage.html',name=loguser,users=users)
 
 
 
