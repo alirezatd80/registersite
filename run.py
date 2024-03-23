@@ -74,7 +74,7 @@ def register():
         addRegisterUser(name,age,email,phonenumber,typeuser)
         return render_template('main.html')
     else:
-        return "1"
+        return render_template('main.html')
             
 
 
