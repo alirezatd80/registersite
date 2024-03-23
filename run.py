@@ -26,26 +26,41 @@ def AddAdmin(name , passsword):
     db.session.add(admin)
     db.session.commit()
 
-def getall():
-   allAdmins = Admins.query.all()
-   return str(allAdmins)
-
-def findByUsername(name):
+def findUserByName(name):
     user = Admins.query.filter_by(username = name).all()
-    return user 
+    return user
+
+#other func
+def stringfomat(text):
+    return text[1:len(text)-2]
+    
+     
+    
 
 # routes
-@app.route("/<username>")
-def main(username):
-     return "hi"      
+@app.route("/")
+def main():
+    return 'Home'
 
 @app.route("/log")
 def login():
     return render_template('login.html')
 
-@app.route("/adminpage")
-def adminpage():
-    return render_template('adminpage.html')
+@app.route('/checklog' , methods = ['POST','GET'])
+def checklog():
+    if request.method == 'POST':   
+       name = request.form['username']
+       password = request.form['password']
+       user = Admins.query.filter_by(username = name).first()
+       if user and password == user.password:
+           return redirect(url_for('adminpage',loguser=name))
+       else:
+           return render_template('login.html')
+    
+
+@app.route("/adminpage/<loguser>")
+def adminpage(loguser):
+    return render_template('adminpage.html',name=loguser)
 
 
 
