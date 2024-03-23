@@ -19,13 +19,13 @@
                 <div id="form" class="col-4 card-body p-4 mt-5">
                     <h3 class="text-center mb-4">Login</h3>
                     <hr>
-                    <form action="/login" method="post">
+                    <form action="/checklog" method="post">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInputUsername" placeholder="Enter Username">
+                            <input type="text" class="form-control" name="username" id="floatingInputUsername" placeholder="Enter Username">
                             <label for="floatingInputUsername">Username</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingInputPassword" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="floatingInputPassword" placeholder="Password">
                             <label for="floatingInputPassword">Password</label>
                         </div>
                         <button type="submit" class="btn btn-secondary btn-lg btn-block col-12 mt-3 p-2">Login</button>
