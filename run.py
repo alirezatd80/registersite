@@ -6,6 +6,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///admins.db'
 db = SQLAlchemy(app)
 
+
+
 #models
 class Admins(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,11 +16,23 @@ class Admins(db.Model):
     
     def __repr__(self):
         return f"{self.username}:{self.password}"
+    
+class RegisteredUser(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    phonenumber = db.Column(db.String(20), nullable=False)
+    typeuser = db.Column(db.String(10), nullable=False)
+
+    def __repr__(self):
+        return f"{self.fullname},{self.age},{self.email},{self.phonenumber},{self.type}"
 
 #create database file
 with app.app_context():
       
        db.create_all()
+      
 
 #database functions 
 def AddAdmin(name , passsword):
@@ -29,6 +43,12 @@ def AddAdmin(name , passsword):
 def findUserByName(name):
     user = Admins.query.filter_by(username = name).all()
     return user
+
+def addRegisterUser(name,age,email,phonenumber,typeuser):
+   adduser =  RegisteredUser(fullname = name , age = age , email = email , phonenumber = phonenumber , typeuser=typeuser)
+   db.session.add(adduser)
+   db.session.commit()
+    
 
 #other func
 def stringfomat(text):
@@ -41,6 +61,21 @@ def stringfomat(text):
 @app.route("/")
 def main():
     return render_template('main.html')
+
+@app.route('/Register' , methods = ['POST','GET'])
+def register():
+    if request.method =='POST':
+        name = request.form['FullName']
+        age = request.form['Age']
+        email = request.form['email']
+        phonenumber = request.form['PhoneNumber']
+        typeuser = request.form['section']
+        addRegisterUser(name,age,email,phonenumber,typeuser)
+        return render_template('main.html')
+    else:
+        return "1"
+            
+
 
 @app.route("/log")
 def login():
